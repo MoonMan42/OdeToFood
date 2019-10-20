@@ -14,16 +14,18 @@ namespace OdeToFood.Pages.Restaurant
         private readonly IRestaurantData restaurant;
         public IEnumerable<OdeToFood.Core.Restaurant> Restaurants { get; set; }
 
+        [BindProperty(SupportsGet =true)]
+        public string SearchTerm { get; set; }
+
         public ListModel(IRestaurantData restaurant)
         {
             this.restaurant = restaurant;
         }
 
         public void OnGet()
-        {
-            Restaurants = restaurant.GetAllRestaurants();
+        {            
+            Restaurants = restaurant.GetRestaurantByName(SearchTerm);
         }
-
-
+       
     }
 }
