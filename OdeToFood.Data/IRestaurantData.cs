@@ -10,6 +10,7 @@ namespace OdeToFood.Data
     {
         IEnumerable<Restaurant> GetAllRestaurants(); 
         IEnumerable<Restaurant> GetRestaurantByName(string name); 
+        Restaurant GetRestaurantById(int Id); 
     }
 
     public class InMemoryRestaurantData : IRestaurantData
@@ -31,6 +32,8 @@ namespace OdeToFood.Data
             return from r in restaurants orderby r.Name select r;
         }
 
+        
+
         public IEnumerable<Restaurant> GetRestaurantByName(string name)
         {
             return from r in restaurants
@@ -38,5 +41,13 @@ namespace OdeToFood.Data
                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
                    select r;
         }
+
+
+        public Restaurant GetRestaurantById(int Id)
+        {
+            return restaurants.SingleOrDefault(r => r.Id == Id);
+
+        }
+
     }
 }
