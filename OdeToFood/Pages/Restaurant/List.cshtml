@@ -19,7 +19,7 @@
     </div>
 </form>
 
-<table class="table">
+@*<table class="table">
     @foreach (var r in Model.Restaurants)
     {
     <tr>
@@ -46,7 +46,12 @@
         </td>
     </tr>
     }
-</table>
+</table>*@
+
+@foreach (var restaurant in Model.Restaurants)
+{
+    <partial name="_Summary" model="restaurant" />
+}
 
 <a asp-page=".\Edit" class="btn btn-primary">Add New</a>
 
