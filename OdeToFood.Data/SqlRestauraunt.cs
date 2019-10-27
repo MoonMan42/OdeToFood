@@ -43,6 +43,11 @@ namespace OdeToFood.Data
                    select r;
         }
 
+        public int GetCountOfRestaurant()
+        {
+            return db.Restaurant.Count();
+        }
+
         public Restaurant GetRestaurantById(int Id)
         {
             return db.Restaurant.Find(Id);
